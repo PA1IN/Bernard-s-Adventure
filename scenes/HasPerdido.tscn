@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://m3qmhfnwt2t5"]
+
+[ext_resource type="Script" path="res://HasPerdido.cs" id="1_7e8wq"]
+[ext_resource type="FontFile" uid="uid://b8258ta2o76cc" path="res://Fonts/EBGaramond-ExtraBold.ttf" id="1_7nvuv"]
+[ext_resource type="Texture2D" uid="uid://bb3qgjdtko4uk" path="res://skull_1f480.png" id="2_407yf"]
+[ext_resource type="Texture2D" uid="uid://cqqfq7aogtc0e" path="res://DALLE_2024-11-22_10.34.59_-_A_game_over_screen_showing_a_sad_hamster_caught_while_trying_to_escape_from_a_futuristic_spaceship._The_hamster_is_surrounded_by_robots_with_glowing_r.webp" id="3_wf53g"]
+[ext_resource type="AudioStream" uid="uid://bxnxdova5yuch" path="res://rana triste bajo la lluvia con musica meme - MocheuZ (youtube).mp3" id="4_0cd2a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sq5mk"]
+font_size = 23
+font_color = Color(1, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7e8wq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = 196.0
+offset_right = 244.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = 225.0
+offset_right = 165.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_7nvuv")
+text = "TU TIEMPO SE HA ACABADO!"
+label_settings = SubResource("LabelSettings_sq5mk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(784, 560)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_407yf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324)
+scale = Vector2(0.642857, 0.632813)
+texture = ExtResource("3_wf53g")
+
+[node name="wif" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0cd2a")

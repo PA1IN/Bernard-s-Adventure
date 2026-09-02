@@ -1,0 +1,122 @@
+[gd_scene load_steps=15 format=3 uid="uid://n4gu83oxnyxw"]
+
+[ext_resource type="Script" path="res://Node2d.cs" id="1_m1nl6"]
+[ext_resource type="Texture2D" uid="uid://bdsyb0bokpdc4" path="res://image (3).png" id="2_4i86l"]
+[ext_resource type="Texture2D" uid="uid://ce803ee8yrbrp" path="res://image (2).png" id="3_026mi"]
+[ext_resource type="Texture2D" uid="uid://tglovt75wfl7" path="res://image (1).png" id="4_e5q4w"]
+[ext_resource type="FontFile" uid="uid://dvlkvb5jlfqwr" path="res://PixeloidSans-Bold.otf" id="5_5mgpx"]
+[ext_resource type="Texture2D" uid="uid://cv21t3bvohyg1" path="res://DALL·E 2024-11-17 04.28.32 - A pixel art depiction of a door in a starship, dimly lit with very low illumination. The door has a futuristic, sci-fi design with metallic textures, .webp" id="6_xi7sa"]
+[ext_resource type="AudioStream" uid="uid://3n1ehqe8rwjj" path="res://coin-upaif-14631.mp3" id="7_2ratk"]
+[ext_resource type="AudioStream" uid="uid://bpaeaphck8k6r" path="res://-click-nice.mp3" id="7_x0ug8"]
+[ext_resource type="AudioStream" uid="uid://epe58ipql7mi" path="res://retro-sci-fi-computer-104231.mp3" id="9_6des7"]
+[ext_resource type="AudioStream" uid="uid://d2tfaqw60nxf4" path="res://1121.MP3" id="9_h4l1x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fho0r"]
+font = ExtResource("5_5mgpx")
+font_size = 19
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_3nxl2"]
+font = ExtResource("5_5mgpx")
+font_size = 42
+outline_size = 13
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 28
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_3hmxx"]
+loop = false
+fade_time = 0.08
+stream_count = 2
+stream_0 = ExtResource("7_x0ug8")
+stream_1 = ExtResource("7_2ratk")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_bdpwe"]
+loop = false
+fade_time = 0.89
+stream_count = 1
+stream_0 = ExtResource("9_h4l1x")
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_m1nl6")
+
+[node name="RedLed" type="Sprite2D" parent="."]
+modulate = Color(3.784, 0.98, 0.98, 1)
+position = Vector2(296, 287.908)
+scale = Vector2(0.242188, 0.146266)
+texture = ExtResource("2_4i86l")
+
+[node name="BlueLed" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 2.162, 1)
+position = Vector2(504, 295.908)
+scale = Vector2(0.22541, 0.204898)
+texture = ExtResource("3_026mi")
+
+[node name="YellowLed" type="Sprite2D" parent="."]
+modulate = Color(1, 1.42, 0.003, 1)
+position = Vector2(696, 295.908)
+scale = Vector2(0.169381, 0.143513)
+texture = ExtResource("4_e5q4w")
+
+[node name="TimerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 912.0
+offset_top = 48.0
+offset_right = 952.0
+offset_bottom = 74.0
+scale = Vector2(0.916232, 1.22908)
+theme_override_fonts/font = ExtResource("5_5mgpx")
+theme_override_font_sizes/font_size = 21
+label_settings = SubResource("LabelSettings_fho0r")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 24.0
+offset_right = 1238.0
+offset_bottom = 76.0
+scale = Vector2(0.640126, 1.62921)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/font = ExtResource("5_5mgpx")
+theme_override_font_sizes/font_size = 29
+text = "Sigue el patrón correctamente!!"
+label_settings = SubResource("LabelSettings_3nxl2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+z_index = -1
+position = Vector2(512, 325)
+scale = Vector2(1, 0.632812)
+texture = ExtResource("6_xi7sa")
+
+[node name="SuccessSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_3hmxx")
+pitch_scale = 3.3
+
+[node name="ErrorSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_bdpwe")
+pitch_scale = 2.41
+
+[node name="PatternSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_6des7")
+
+[node name="MessageLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 392.0
+offset_right = 472.0
+offset_bottom = 415.0
+scale = Vector2(4.09866, 2.68989)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
